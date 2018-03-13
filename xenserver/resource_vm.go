@@ -209,7 +209,7 @@ func resourceVMCreate(d *schema.ResourceData, m interface{}) error {
 
 	// Reset base template name
 	otherConfig := vm.OtherConfig
-	//delete (otherConfig "disks")
+	delete(otherConfig, "disks")
 	otherConfig["base_template_name"] = dBaseTemplateName
 	if err = c.client.VM.SetOtherConfig(c.session, vm.VMRef, otherConfig); err != nil {
 		return err
