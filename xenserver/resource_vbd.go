@@ -54,6 +54,7 @@ func queryTemplateVBDs(c *Connection, vm *VMDescriptor) (vbds []*VBDDescriptor, 
 		}
 
 		if vbd.IsTemplateDevice {
+		   	delete (vm.otherConfig "disks")
 			log.Printf("[DEBUG] VBD %s (type = %s) comes from template", vbd.UUID, vbd.Type)
 			vbds = append(vbds, vbd)
 		}
